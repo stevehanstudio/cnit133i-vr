@@ -46,7 +46,6 @@ AFRAME.registerComponent('lift-sphere', {
 AFRAME.registerComponent('change-color', {
 	init: function () {
 		const { el } = this
-    console.log(el);
 		this.changeColor = function () {
 			const curColor = el.getAttribute('color')
 			// note: colors get converted from hex to RGBA
