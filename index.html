@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CNIT 133I Homework 3 - VR</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script> -->
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="animations.js"></script>
+</head>
+<body>
+  <a-scene cursor="rayOrigin: mouse">
+    <a-assets>
+      <img id="ground" src="textures/Ground033_1K_Color.jpg" alt="sand base color texture">
+      <img id="ground-normal" src="textures/Ground033_1K_NormalGL.jpg" alt="sand texture normal map">
+      <img id="ground-displacement" src="textures/Ground033_1K_Displacement.jpg" alt="sand texture displacement map">
+      <img id="ground-ao" src="textures/Ground033_1K_AmbientOcclusion.jpg" alt="sand ambient occlusion map">
+    </a-assets>
+    <a-sky color="#87CEEB"></a-sky>
+    <a-plane
+      color="white"
+      src="#ground"
+      repeat="4 4"
+      normal-map="#ground-normal"
+      normal-texture-repeat="2 2"
+      normal-scale="1 -1"
+      displacement-map="#ground-displacement"
+      displacement-texture-repeat="2 2"
+      displacement-scale="1"
+      ambient-occlusion-map="#ground-ao"
+      ambient-occlusion-map-intensity="0.5"
+      ambient-occlusion-texture-repeat="2 2"
+      roughness="0.8"
+      segment-height="64"
+      segment-width="64"
+      position="0 0 -5"
+      rotation="-90 0 0"
+      width="10"
+      height="10"></a-plane>
+    <a-sphere
+      class="clickable"
+      lift-sphere
+      change-color
+      position="-1.5 2 -4"
+      color="#4655b8"
+      radius="0.8"
+    ></a-sphere>
+    <a-cylinder
+      class="clickable"
+      rotate-cylinder
+      color="#267C7E"
+      position="1 2.25 -4"
+      radius="0.5"
+      height="2"
+    ></a-cylinder>
+    <a-entity id="dolly">
+      <a-entity camera position="0 2 0" look-controls wasd-controls>
+        <a-cursor id="cursor" raycaster="objects: .clickable" fuse="true" fusetimeout="3000"></a-cursor>
+      </a-entity>
+    </a-entity>
+  </a-scene>
+</body>
+</html>
+
